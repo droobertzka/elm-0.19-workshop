@@ -17,7 +17,7 @@ Wednesday, August 15, 2018
 * Reasons for differences in syntax
   * e.g. -- vs // for comments, whitespace instead of parens, commas at beginning of lines
 * Are there any new JS language features that Elm uses for compile targets where it'd be useful to specify a browser target? (e.g. Typed Lists vs Arrays)
-  * No, Elm targets ES3 and some ES5 where necessary (Frame Animations?). 
+  * No, Elm targets ES3 and some ES5 where necessary (Frame Animations?).
   * Elm is designed to compile to WebAssembly when WebAssembly is ready (needs garbage collector, etc.)
   * Lists compile to "Linked Lists" in JS
 * Reasoning behind _List.map_ vs a generic _map_ function?
