@@ -2,23 +2,15 @@ module Main exposing (main)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import List exposing (map)
 
 
 viewTags tags =
-    let
-        renderedTags =
-            -- 👉 TODO: use `List.map` and `viewTag` to render the tags
-            []
-    in
-    div [ class "tag-list" ] renderedTags
+    div [ class "tag-list" ] <| map viewTag tags
 
 
 viewTag tagName =
-    {- 👉 TODO: render something like this:
-
-       <button class="tag-pill tag-default">tag name goes here</button>
-    -}
-    button [] []
+    button [ class "tag-pill tag-default" ] [ text tagName ]
 
 
 main =
@@ -34,9 +26,7 @@ main =
                 , div [ class "col-md-3" ]
                     [ div [ class "sidebar" ]
                         [ p [] [ text "Popular Tags" ]
-
-                        -- 👉 TODO: instead of passing [] to viewTags, pass the actual tags
-                        , viewTags []
+                        , viewTags tags
                         ]
                     ]
                 ]
