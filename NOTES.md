@@ -41,3 +41,13 @@ Thursday, August 16, 2018
 * when dealing with a record, you can accept it as { r | prop : String } where all we care is that the record has a property named "prop" which is a string. Then, we can still pass the whole record along but only deal with that single prop.
 * ! - Open records are somewhat discouraged because their existence in Elm has been called into question due to considerations when compiling into WebAssembly.
 
+**Phantom types**
+
+**Type Parameter Design**
+* List (Attribute msg)
+  * Give me a list of attributes with variables of ANY type
+* List (Attribute Msg)
+  * Give me a list of attributes with variables with a type of _Msg_ (however that's defined)
+* List (Attribute Never)
+  * Only ever give me a list of attributes with unbound variables
+
