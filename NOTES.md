@@ -2,6 +2,7 @@
 
 ## Day 1
 Wednesday, August 15, 2018
+-----------------------------------
 
 ### 0.19.0 Changes
 * _Union Types_ are now referred to as _Custom Types_
@@ -26,3 +27,8 @@ Wednesday, August 15, 2018
 ### COMMENTS
 * Elm slack - there is a Minneapolis room
 * Good idea bringing TypeScript in for comparison
+
+
+## Day 2
+Thursday, August 16, 2018
+-----------------------------------
