@@ -96,9 +96,12 @@ authentication token to JavaScript.
     it was depending on the old name. Follow the compiler errors to fix them!
 
 -}
+port storeSession : Maybe String -> Cmd msg
+
+
 sendSessionToJavaScript : Maybe String -> Cmd msg
 sendSessionToJavaScript maybeAuthenticationToken =
-    Cmd.none
+    storeSession maybeAuthenticationToken
 
 
 
@@ -124,7 +127,10 @@ authentication token from JavaScript.
 -}
 receiveSessionFromJavaScript : (Value -> msg) -> Sub msg
 receiveSessionFromJavaScript toMsg =
-    Sub.none
+    onSessionChange toMsg
+
+
+port onSessionChange : (Value -> msg) -> Sub msg
 
 
 decode : Nav.Key -> Value -> Session
