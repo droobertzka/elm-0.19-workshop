@@ -115,14 +115,17 @@ defaultFeedTab =
     💡 HINT: It may end up with multiple arguments!
 
 -}
-fetchFeed : Model -> FeedTab -> Int -> Cmd Msg
-fetchFeed model feedTabs page =
-    let
-        username =
-            currentUsername model
 
+
+
+-- TODO: take in username here instead of feedtabs?
+
+
+fetchFeed : Session -> Username -> Int -> Cmd Msg
+fetchFeed session username page =
+    let
         maybeCred =
-            Session.cred model.session
+            Session.cred session
 
         ( extraParamName, extraParamVal ) =
             case feedTabs of
@@ -138,7 +141,7 @@ fetchFeed model feedTabs page =
         |> HttpBuilder.withQueryParam extraParamName extraParamVal
         |> Cred.addHeaderIfAvailable maybeCred
         |> PaginatedList.fromRequestBuilder articlesPerPage page
-        |> Task.map (Feed.init model.session)
+        |> Task.map (Feed.init session)
         |> Task.mapError (Tuple.pair username)
         |> Task.attempt CompletedFeedLoad
 
