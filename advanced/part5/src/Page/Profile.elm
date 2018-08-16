@@ -218,7 +218,7 @@ view model =
                                                 [ [ viewTabs model.feedTab ]
                                                 , Feed.viewArticles model.timeZone feed
                                                     |> List.map (Html.map GotFeedMsg)
-                                                , [ viewPagination (Feed.articles feed) ]
+                                                , [ PaginatedList.view ClickedFeedPage (Feed.articles feed) ]
                                                 ]
                                         ]
                                     ]
@@ -256,36 +256,32 @@ then refactor both Page.Home and Page.Profile to use it!
 (You'll need to introduce at least one extra argument for this to work.)
 
 -}
-viewPagination : PaginatedList (Article Preview) -> Html Msg
-viewPagination list =
-    let
-        viewPageLink currentPage =
-            pageLink currentPage (currentPage == page list)
-    in
-    if total list > 1 then
-        List.range 1 (total list)
-            |> List.map viewPageLink
-            |> ul [ class "pagination" ]
-
-    else
-        Html.text ""
-
-
-pageLink : Int -> Bool -> Html Msg
-pageLink targetPage isActive =
-    li [ classList [ ( "page-item", True ), ( "active", isActive ) ] ]
-        [ a
-            [ class "page-link"
-            , onClick (ClickedFeedPage targetPage)
-
-            -- The RealWorld CSS requires an href to work properly.
-            , href ""
-            ]
-            [ text (String.fromInt targetPage) ]
-        ]
 
 
 
+-- viewPagination : PaginatedList (Article Preview) -> Html Msg
+-- viewPagination list =
+--     let
+--         viewPageLink currentPage =
+--             pageLink currentPage (currentPage == page list)
+--     in
+--     if total list > 1 then
+--         List.range 1 (total list)
+--             |> List.map viewPageLink
+--             |> ul [ class "pagination" ]
+--     else
+--         Html.text ""
+-- pageLink : Int -> Bool -> Html Msg
+-- pageLink targetPage isActive =
+--     li [ classList [ ( "page-item", True ), ( "active", isActive ) ] ]
+--         [ a
+--             [ class "page-link"
+--             , onClick (ClickedFeedPage targetPage)
+--             -- The RealWorld CSS requires an href to work properly.
+--             , href ""
+--             ]
+--             [ text (String.fromInt targetPage) ]
+--         ]
 -- PAGE TITLE
 
 
