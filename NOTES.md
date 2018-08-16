@@ -32,3 +32,12 @@ Wednesday, August 15, 2018
 ## Day 2
 Thursday, August 16, 2018
 -----------------------------------
+
+**Bound vs Unbound type variables**
+* bound type variables (e.g. List _number_, number is an Int or Float)
+* unbound type variable is like List _a_
+
+**Open vs Closed Records**
+* when dealing with a record, you can accept it as { r | prop : String } where all we care is that the record has a property named "prop" which is a string. Then, we can still pass the whole record along but only deal with that single prop.
+* ! - Open records are somewhat discouraged because their existence in Elm has been called into question due to considerations when compiling into WebAssembly.
+
