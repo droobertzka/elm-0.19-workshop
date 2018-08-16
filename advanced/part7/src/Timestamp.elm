@@ -34,7 +34,17 @@ iso8601Decoder =
 
        💡 HINT: Decode.andThen will be useful here.
     -}
-    "..."
+    Decode.string
+        |> Decode.andThen decoderHelp
+
+
+decoderHelp str =
+    case Iso8601.toTime str of
+        Err _ ->
+            Decode.fail "It didnt work"
+
+        Ok time ->
+            Decode.succeed time
 
 
 
